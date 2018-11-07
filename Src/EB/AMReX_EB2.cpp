@@ -5,6 +5,7 @@
 #include <AMReX_EB2_IF_Ellipsoid.H>
 #include <AMReX_EB2_IF_Plane.H>
 #include <AMReX_EB2_IF_Sphere.H>
+#include <AMReX_EB2_IF_Spline.H>
 
 #include <AMReX_EB2_GeometryShop.H>
 #include <AMReX_EB2.H>
@@ -112,10 +113,19 @@ Build (const Geometry& geom, int required_coarsening_level, int max_coarsening_l
         EB2::SphereIF sf(radius, center, has_fluid_inside);
 
         EB2::GeometryShop<EB2::SphereIF> gshop(sf);
-        EB2::Build(gshop, geom, required_coarsening_level, max_coarsening_level);
-    }
-    else
-    {
+        EB2::Build(gshop, geom, required_coarsening_level,
+                   max_coarsening_level);
+    } else if(geom_type == "spline") {
+
+      std::string splineFile;
+      pp.get("Spline definition file", splineFile);
+
+      EB2::SplineIF spline(splineFile);
+
+      EB2::GeometryShop<EB2::SplineIF> gshop(spline);
+
+      EB2::Build(gshop, geom, required_coarsening_level, max_coarsening_level);
+    } else {
         amrex::Abort("geom_type "+geom_type+ " not supported");
     }
 }

@@ -50,7 +50,9 @@ CEXE_headers += AMReX_EB2_IF_Ellipsoid.H
 CEXE_headers += AMReX_EB2_IF_Plane.H
 CEXE_headers += AMReX_EB2_IF_Sphere.H
 CEXE_headers += AMReX_EB2_IF_Polynomial.H
-
+CEXE_headers += AMReX_distFcnElement.H
+CEXE_sources += AMReX_distFcnElement.cpp
+CEXE_headers += AMReX_EB2_IF_Spline.H
 
 CEXE_headers += AMReX_EB2_IF_Complement.H
 CEXE_headers += AMReX_EB2_IF_Intersection.H
