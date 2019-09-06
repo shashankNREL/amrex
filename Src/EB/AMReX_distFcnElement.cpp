@@ -327,14 +327,9 @@ void SplineDistFcnElement2d::print_spline() const {
       amrex::Real y = eval(j*dt, control_points_y[i],
                            control_points_y[i+1], Dy[i], Dy[i+1]);
 
-      // std::cout << x << "  " <<  y << std::endl;
     }
   }
 
-    for (int i=0; i<nsplines; i++) {
-      std::cout  << "Derivative i, Dx, Dy "<< i << "\t" <<  Dx[i] << "\t" << Dy[i] << std::endl;
-    }
-  
 }
 
 
